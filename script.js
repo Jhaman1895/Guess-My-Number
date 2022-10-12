@@ -3,7 +3,7 @@
 let randomNumber = Math.trunc(Math.random()*20) + 1;
 
 let initialScore = 20;
-
+let highScore = 0;
 
 
 document.querySelector('.check').addEventListener('click',
@@ -17,12 +17,15 @@ function () {
     //when player wins
     else if(guess == randomNumber) {
         document.querySelector('.message').textContent = 'Correct!';
-        initialScore++;
         document.querySelector('.score').textContent = initialScore;
 
         document.querySelector('body').style.backgroundColor = '#60b347';
         document.querySelector('.number').style.width = '30rem';
         document.querySelector('.number').textContent = randomNumber;
+        if (highScore < initialScore) {
+            highScore = initialScore;
+            document.querySelector('.highscore').textContent = highScore;
+        }
     }
     else if (guess > randomNumber) {
         if (initialScore > 1) {
